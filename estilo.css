@@ -1,0 +1,2685 @@
+/* === estilo0e63.css === */
+/* MARK: FUENTES */
+@font-face {
+  font-family: "Tangled";
+  src: url("Tangled-2Dav.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bucklane Script";
+  src: url("BucklaneScript_PERSONAL_USE_ONLY.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wonder";
+  src: url("super-wonder.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* MARK: VARIABLES */
+:root {
+  --rapunzel-bg: #35184f;
+  --rapunzel-ink: #fff7e8;
+  --rapunzel-muted: #efd8f4;
+  --rapunzel-lilac: #c59bee;
+  --rapunzel-violet: #66338a;
+  --rapunzel-plum: #2a123f;
+  --rapunzel-rose: #f6a9cd;
+  --rapunzel-gold: #f4c45f;
+  --rapunzel-cream: #fff1c8;
+  --rapunzel-line: rgba(255, 220, 134, 0.58);
+  --rapunzel-panel: rgba(54, 22, 78, 0.66);
+  --rapunzel-panel-soft: rgba(255, 246, 225, 0.1);
+  --rapunzel-shadow: 0 24px 70px rgba(30, 9, 46, 0.38);
+  --rapunzel-glow: 0 0 30px rgba(244, 196, 95, 0.34);
+  --font-title: "Bucklane Script", "Wonder", Georgia, serif;
+  --font-rapunzel-name: "Tangled", "Wonder", Georgia, serif;
+  --font-accent: "Wonder", Georgia, serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
+  --content-width: min(100%, 460px);
+  --section-gap: clamp(54px, 12vw, 92px);
+  --panel-radius: 24px;
+  --photo-radius: 26px;
+  --gallery-gap: clamp(8px, 2.4vw, 14px);
+  --bg-image: url("img/rapunzel64a3.jpg?cache=102");
+}
+
+/* MARK: BASE */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100svh;
+  color: var(--rapunzel-ink);
+  font-family: var(--font-body);
+  text-align: center;
+  background:
+    var(--bg-image) center / cover fixed,
+    var(--rapunzel-bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 236, 169, 0.24) 0 2px, transparent 3px),
+    radial-gradient(circle at 74% 24%, rgba(246, 169, 205, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 38% 64%, rgba(197, 155, 238, 0.2) 0 2px, transparent 3px);
+  background-size: 92px 92px, 138px 138px, 176px 176px;
+  animation: rapunzel-stars 24s linear infinite;
+}
+
+button,
+input,
+textarea,
+a {
+  font: inherit;
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* MARK: FONDO */
+.ambient-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent;
+}
+
+.magic-field {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.magic-field i {
+  position: absolute;
+  left: var(--lantern-left, 9%);
+  bottom: -46px;
+  width: clamp(18px, 5vw, 34px);
+  height: clamp(30px, 8vw, 58px);
+  border-radius: 9px 9px 60% 60%;
+  background:
+    radial-gradient(circle at 50% 28%, #fff8c9 0 22%, transparent 24%),
+    linear-gradient(180deg, #ffd877, #e89239);
+  box-shadow: 0 0 22px rgba(244, 196, 95, 0.8);
+  opacity: 0;
+  animation: lantern-rise var(--lantern-duration, 26s) linear infinite;
+  animation-delay: var(--lantern-delay, 0s);
+}
+
+.magic-field i:nth-child(1) { --lantern-left: 7%;  --lantern-duration: 25s; --lantern-delay: -1s;  --lantern-drift: 28px; }
+.magic-field i:nth-child(2) { --lantern-left: 18%; --lantern-duration: 29s; --lantern-delay: -16s; --lantern-drift: -34px; }
+.magic-field i:nth-child(3) { --lantern-left: 31%; --lantern-duration: 27s; --lantern-delay: -9s;  --lantern-drift: 22px; }
+.magic-field i:nth-child(4) { --lantern-left: 44%; --lantern-duration: 32s; --lantern-delay: -24s; --lantern-drift: -26px; }
+.magic-field i:nth-child(5) { --lantern-left: 57%; --lantern-duration: 28s; --lantern-delay: -6s;  --lantern-drift: 36px; }
+.magic-field i:nth-child(6) { --lantern-left: 69%; --lantern-duration: 31s; --lantern-delay: -20s; --lantern-drift: -30px; }
+.magic-field i:nth-child(7) { --lantern-left: 79%; --lantern-duration: 26s; --lantern-delay: -12s; --lantern-drift: 24px; }
+.magic-field i:nth-child(8) { --lantern-left: 88%; --lantern-duration: 30s; --lantern-delay: -26s; --lantern-drift: -38px; }
+
+/* MARK: ORNAMENTOS */
+.decor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.decor-layer img {
+  position: fixed;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 28px rgba(22, 7, 34, 0.28));
+}
+
+.ornament-top {
+  top: -8px;
+  left: 50%;
+  width: min(112vw, 580px);
+  transform: translateX(-50%);
+}
+
+.ornament-bottom {
+  right: 50%;
+  bottom: -10px;
+  width: min(112vw, 560px);
+  transform: translateX(50%);
+}
+
+.ornament-left,
+.ornament-right {
+  top: 50%;
+  width: min(22vw, 120px);
+  max-height: 82svh;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.ornament-left {
+  left: -34px;
+  transform: translateY(-50%);
+}
+
+.ornament-right {
+  right: -34px;
+  transform: translateY(-50%);
+}
+
+.flower-crown {
+  left: 50%;
+  bottom: 6px;
+  width: min(74vw, 330px);
+  transform: translateX(-50%);
+  opacity: 0.96;
+}
+
+.flower-soft {
+  width: min(34vw, 160px);
+  opacity: 0.72;
+}
+
+.flower-soft-a {
+  left: -34px;
+  top: 20%;
+  transform: rotate(-16deg);
+}
+
+.flower-soft-b {
+  right: -42px;
+  top: 58%;
+  transform: rotate(14deg);
+}
+
+.flower-soft-c {
+  left: 6%;
+  bottom: 17%;
+  transform: rotate(8deg);
+}
+
+.float-sun {
+  --sun-translate-x: -50%;
+  --sun-visible-opacity: 0.86;
+  top: clamp(74px, 14svh, 130px);
+  left: 50%;
+  width: clamp(52px, 15vw, 76px);
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  animation: soft-twirl 9s ease-in-out infinite;
+}
+
+.float-sun.is-countdown-visible {
+  opacity: var(--sun-visible-opacity);
+  visibility: visible;
+}
+
+.lantern {
+  width: clamp(34px, 10vw, 56px);
+  opacity: 0.82;
+  animation: lantern-float 8s ease-in-out infinite;
+}
+
+.lantern-one {
+  right: 9%;
+  top: 18%;
+}
+
+.lantern-two {
+  left: 13%;
+  top: 34%;
+  animation-delay: -2.4s;
+}
+
+.lantern-three {
+  right: 18%;
+  bottom: 25%;
+  animation-delay: -4.2s;
+}
+
+/* MARK: OVERLAY */
+.envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(255, 224, 142, 0.22), transparent 30%),
+    linear-gradient(145deg, #2d1245, #5d2d78 52%, #271039);
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.entry-video,
+.entry-poster-frame {
+  display: none;
+}
+
+.envelope-screen.has-entry-video {
+  isolation: isolate;
+  place-items: center;
+  padding: 2rem 1.2rem;
+  background: #2d1245;
+}
+
+.envelope-screen.has-entry-video::before,
+.envelope-screen.has-entry-video::after {
+  display: none;
+}
+
+.envelope-screen.has-entry-video .entry-video,
+.envelope-screen.has-entry-video .entry-poster-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  background: #2d1245;
+  pointer-events: none;
+}
+
+.envelope-screen.has-entry-video .entry-poster-frame {
+  transform: scaleX(1.035);
+  transform-origin: center center;
+}
+
+.envelope-screen.has-entry-video .entry-poster-frame[hidden],
+.envelope-screen.has-entry-video.is-video-playing .entry-poster-frame {
+  display: none !important;
+}
+
+.envelope-screen.has-entry-video .overlay-card {
+  position: absolute;
+  right: 0;
+  bottom: 10vh;
+  bottom: calc(10svh + env(safe-area-inset-bottom, 0px));
+  left: 0;
+  z-index: 2;
+  width: auto;
+  min-height: 0;
+  padding: 0;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.envelope-screen.is-entry-loading .overlay-card {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-screen.has-entry-video .overlay-card::before,
+.envelope-screen.has-entry-video .overlay-event,
+.envelope-screen.has-entry-video .overlay-nombre,
+.envelope-screen.has-entry-video .open-seal small {
+  display: none;
+}
+
+.envelope-screen.has-entry-video .open-seal {
+  width: min(280px, 76vw);
+  min-width: 0;
+  min-height: 54px;
+  margin-top: 0;
+  padding: 0.78rem 1.15rem;
+}
+
+.envelope-screen.has-entry-video .open-seal span {
+  font-family: var(--font-texto);
+  font-size: clamp(0.95rem, 3.9vw, 1.12rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.envelope-screen.has-entry-video.is-video-playing .overlay-card {
+  opacity: 0;
+  transform: translateY(16px) scale(0.94);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.45s ease;
+}
+
+.envelope-screen.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-screen::before,
+.envelope-screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 52%;
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255, 238, 183, 0.18), transparent 35%, rgba(33, 10, 48, 0.42)),
+    var(--bg-image) center / cover;
+  box-shadow: inset 0 0 0 1px rgba(255, 223, 144, 0.24);
+  transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.envelope-screen::before {
+  left: 0;
+  transform-origin: left center;
+}
+
+.envelope-screen::after {
+  right: 0;
+  transform-origin: right center;
+}
+
+.is-open .envelope-screen {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.is-open .envelope-screen::before {
+  transform: translateX(-100%) rotateY(-18deg);
+}
+
+.is-open .envelope-screen::after {
+  transform: translateX(100%) rotateY(18deg);
+}
+
+.overlay-card {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 10px;
+  width: min(92vw, 390px);
+  min-height: clamp(274px, 68vw, 330px);
+  padding: clamp(30px, 8vw, 46px) clamp(22px, 7vw, 36px);
+  text-align: center;
+  border: 1px solid rgba(255, 226, 144, 0.46);
+  border-radius: 34px 34px 110px 110px;
+  background:
+    linear-gradient(180deg, rgba(255, 246, 225, 0.15), rgba(64, 24, 92, 0.62)),
+    rgba(44, 18, 68, 0.72);
+  box-shadow: var(--rapunzel-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.overlay-card::before {
+  content: "";
+  width: min(78%, 250px);
+  height: 76px;
+  margin-top: -22px;
+  margin-bottom: -8px;
+  background: url("img/rapunzel-flores-superior41f6.png?cache=88") center / contain no-repeat;
+  filter: drop-shadow(0 12px 20px rgba(30, 9, 46, 0.32));
+}
+
+.overlay-event {
+  color: var(--rapunzel-gold);
+  font-size: clamp(1.02rem, 4.8vw, 1.38rem);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: none;
+  text-shadow: 0 8px 18px rgba(23, 7, 34, 0.46);
+}
+
+.overlay-nombre {
+  color: var(--rapunzel-cream);
+  font-family: var(--font-rapunzel-name);
+  font-size: clamp(4rem, 19vw, 7rem);
+  line-height: 0.82;
+  text-transform: none;
+  text-shadow: 0 0 18px rgba(244, 196, 95, 0.34), 0 12px 24px rgba(23, 7, 34, 0.42);
+}
+
+.open-seal {
+  display: grid;
+  gap: 7px;
+  place-items: center;
+  min-width: min(100%, 260px);
+  margin-top: clamp(18px, 6.4vw, 34px);
+  padding: 15px 22px;
+  color: #2b153d;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, #fff6c7, #f4c45f 48%, #e9a849),
+    var(--rapunzel-gold);
+  box-shadow: 0 16px 36px rgba(30, 9, 46, 0.36), 0 0 28px rgba(244, 196, 95, 0.34);
+  cursor: pointer;
+}
+
+.open-seal span {
+  color: inherit;
+  font-family: var(--font-accent);
+  font-size: clamp(1.35rem, 6vw, 2.05rem);
+  line-height: 1;
+}
+
+.open-seal small {
+  color: rgba(43, 21, 61, 0.78);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+}
+
+/* MARK: ESTRUCTURA */
+.invite-viewport,
+.phone-preview-shell,
+.phone-preview-stage {
+  position: relative;
+}
+
+.invite-shell {
+  position: relative;
+  z-index: 4;
+  width: var(--content-width);
+  max-width: calc(100vw - 24px);
+  margin: 0 auto;
+  padding: 0 0 calc(78px + env(safe-area-inset-bottom));
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.28s, transform 0.7s ease 0.28s;
+}
+
+.is-open .invite-shell {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-block,
+.date-block,
+.family-block,
+.locations-block,
+.timeline-block,
+.details-block,
+.dress-block,
+.gallery-block,
+.notes-block,
+.rsvp-block,
+.qr-fotos-section,
+.memory-strip {
+  position: relative;
+  margin: 0 auto var(--section-gap);
+}
+
+.date-block,
+.family-block,
+.locations-block,
+.timeline-block,
+.details-block,
+.dress-block,
+.gallery-block,
+.notes-block,
+.rsvp-block {
+  isolation: isolate;
+  padding: clamp(26px, 7vw, 42px) clamp(18px, 5vw, 30px);
+  border: 1px solid var(--rapunzel-line);
+  border-radius: var(--panel-radius);
+  background:
+    linear-gradient(180deg, rgba(255, 246, 225, 0.1), rgba(54, 22, 78, 0.64)),
+    var(--rapunzel-panel);
+  box-shadow: var(--rapunzel-shadow);
+  overflow: hidden;
+}
+
+.date-block::before,
+.family-block::before,
+.locations-block::before,
+.timeline-block::before,
+.details-block::before,
+.dress-block::before,
+.gallery-block::before,
+.notes-block::before,
+.rsvp-block::before {
+  content: "";
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(78%, 280px);
+  height: 58px;
+  margin: -8px auto 10px;
+  background: url("img/rapunzel-flores-superior41f6.png?cache=88") center / contain no-repeat;
+  opacity: 0.86;
+  filter: drop-shadow(0 10px 16px rgba(22, 7, 34, 0.26));
+}
+
+.family-block::after,
+.locations-block::after,
+.timeline-block::after,
+.details-block::after,
+.dress-block::after,
+.gallery-block::after,
+.notes-block::after,
+.rsvp-block::after {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  width: clamp(42px, 13vw, 62px);
+  aspect-ratio: 0.78;
+  pointer-events: none;
+  opacity: 0.78;
+  background: url("img/lampara41f6.png?cache=88") center / contain no-repeat;
+  filter: drop-shadow(0 12px 16px rgba(30, 9, 46, 0.46));
+  transform-origin: center 45%;
+  animation: rsvp-lantern-float 6.5s ease-in-out infinite;
+}
+
+.family-block::after,
+.timeline-block::after,
+.dress-block::after,
+.gallery-block::after,
+.notes-block::after {
+  --float-rotate: 10deg;
+  top: clamp(18px, 5vw, 28px);
+  right: clamp(14px, 4vw, 24px);
+}
+
+.locations-block::after,
+.details-block::after,
+.rsvp-block::after {
+  --float-rotate: -12deg;
+  bottom: clamp(18px, 5vw, 28px);
+  left: clamp(14px, 4vw, 24px);
+  animation-delay: -2.4s;
+}
+
+.family-block > *,
+.locations-block > *,
+.timeline-block > *,
+.details-block > *,
+.dress-block > *,
+.gallery-block > *,
+.notes-block > *,
+.rsvp-block > * {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow,
+.script-line {
+  margin: 0 0 8px;
+  color: var(--rapunzel-gold);
+  font-family: var(--font-body);
+  font-size: clamp(0.74rem, 2.8vw, 0.92rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block: 0;
+}
+
+h1,
+h2 {
+  color: var(--rapunzel-cream);
+  font-family: var(--font-title);
+  font-weight: 400;
+  text-transform: capitalize;
+  text-shadow: 0 0 16px rgba(244, 196, 95, 0.24), 0 12px 24px rgba(27, 8, 41, 0.38);
+}
+
+#hero-name {
+  font-family: var(--font-rapunzel-name);
+  text-transform: none;
+}
+
+h2 {
+  font-size: clamp(2.8rem, 13vw, 5.3rem);
+  line-height: 0.92;
+}
+
+/* MARK: HERO */
+.hero-block {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  justify-items: center;
+  gap: clamp(16px, 4.2vw, 26px);
+  padding: clamp(36px, 6svh, 68px) 0 60px;
+}
+
+.hero-block::before {
+  --sun-visible-opacity: 1;
+  content: "";
+  width: clamp(64px, 18vw, 82px);
+  aspect-ratio: 1;
+  margin-bottom: -4px;
+  background: url("img/Sol_rapunzel9280.png?cache=105") center / contain no-repeat;
+  filter: drop-shadow(0 0 18px rgba(244, 196, 95, 0.46));
+  opacity: 1;
+  animation: soft-twirl 9s ease-in-out infinite;
+}
+
+.hero-block .eyebrow {
+  font-size: clamp(0.98rem, 3.8vw, 1.26rem);
+  letter-spacing: 0.24em;
+}
+
+.hero-block h1 {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(5.8rem, 27vw, 10rem);
+  line-height: 0.78;
+  margin-bottom: clamp(1.7rem, 7vw, 3rem);
+}
+
+.mood {
+  position: relative;
+  z-index: 1;
+  width: min(86%, 32ch);
+  padding: 0.55rem 0.85rem;
+  color: #fff8d7;
+  font-size: clamp(1rem, 3.8vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.58;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(49, 19, 72, 0.48), transparent);
+  text-shadow: 0 2px 8px rgba(31, 8, 48, 0.9), 0 0 18px rgba(244, 196, 95, 0.34);
+}
+
+.portrait-frame {
+  position: relative;
+  justify-self: center;
+  width: min(96vw, 58svh, 440px);
+  margin: -8px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.portrait-frame::before {
+  display: none;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.quick-nav {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-self: start;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: min(92%, 360px);
+  margin-top: -56px;
+}
+
+.quick-nav a,
+.map-button,
+.qr-fotos-button,
+.rsvp-block button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  color: #32184a;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fff7cc, #f3c25c 52%, #eaa647);
+  box-shadow: 0 12px 28px rgba(31, 8, 48, 0.26);
+}
+
+.quick-nav a {
+  min-height: 28px;
+  padding: 2px 14px;
+  color: var(--rapunzel-cream);
+  line-height: 1;
+  opacity: 0;
+  translate: 0 18px;
+  scale: 0.84;
+  text-shadow: 0 1px 1px rgba(58, 24, 7, 0.9);
+  border-color: rgba(242, 183, 105, 0.82);
+  border-bottom: 2px solid #6f3918;
+  background:
+    linear-gradient(180deg, rgba(255, 220, 154, 0.24), rgba(176, 106, 47, 0.08) 46%, rgba(86, 38, 10, 0.46)),
+    url("img/principal2c10.png?cache=116") center bottom / 460px auto no-repeat,
+    #a55b1d;
+  box-shadow:
+    0 2px 0 rgba(106, 52, 21, 0.72),
+    0 5px 9px rgba(45, 20, 8, 0.26),
+    inset 0 2px 2px rgba(255, 226, 164, 0.38),
+    inset 0 -3px 4px rgba(67, 27, 6, 0.34);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.quick-nav.is-in-view a {
+  animation: wood-button-enter 0.7s cubic-bezier(0.2, 0.9, 0.24, 1.22) both;
+}
+
+.quick-nav.is-in-view a:nth-child(1) { animation-delay: 0.08s; }
+.quick-nav.is-in-view a:nth-child(2) { animation-delay: 0.2s; }
+.quick-nav.is-in-view a:nth-child(3) { animation-delay: 0.32s; }
+
+.quick-nav a:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 3px 0 rgba(106, 52, 21, 0.76),
+    0 7px 12px rgba(45, 20, 8, 0.3),
+    inset 0 2px 2px rgba(255, 226, 164, 0.42),
+    inset 0 -3px 4px rgba(67, 27, 6, 0.34);
+}
+
+.quick-nav a:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 1px 0 rgba(106, 52, 21, 0.68),
+    0 2px 5px rgba(45, 20, 8, 0.24),
+    inset 0 2px 4px rgba(67, 27, 6, 0.28);
+}
+
+/* MARK: FECHA HERO */
+.hero-date {
+  width: min(96%, 390px);
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  margin: clamp(0.75rem, 2.8vw, 1.1rem) auto 0;
+  color: var(--rapunzel-cream);
+  text-align: center;
+  text-shadow: 0 3px 10px rgba(30, 8, 48, 0.9), 0 0 18px rgba(244, 196, 95, 0.24);
+}
+
+.hero-date-day {
+  color: var(--rapunzel-gold);
+  font-size: clamp(1.3rem, 5.4vw, 1.72rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.hero-date-full {
+  color: var(--rapunzel-cream);
+  font-family: var(--font-accent);
+  font-size: clamp(2.05rem, 8.4vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hero-date-time {
+  color: var(--rapunzel-gold);
+  font-size: clamp(1.48rem, 6.2vw, 2rem);
+  font-weight: 900;
+  line-height: 1.12;
+}
+
+/* MARK: FECHA */
+.date-block {
+  border-radius: 28px 96px 28px 96px;
+}
+
+.date-block h2 {
+  font-size: clamp(2.3rem, 10vw, 4.6rem);
+}
+
+/* MARK: FOTOS */
+.memory-strip {
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--rapunzel-line);
+  border-radius: 34px;
+  background: rgba(44, 18, 68, 0.6);
+  box-shadow: var(--rapunzel-shadow);
+}
+
+.memory-strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.memory-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 36%, rgba(33, 10, 48, 0.84)),
+    radial-gradient(circle at 50% 18%, rgba(244, 196, 95, 0.2), transparent 34%);
+}
+
+.memory-strip div {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  color: var(--rapunzel-cream);
+  font-family: var(--font-accent);
+  font-size: clamp(1.05rem, 4.8vw, 1.75rem);
+  line-height: 1;
+  text-shadow: 0 8px 18px rgba(23, 7, 34, 0.52);
+}
+
+/* MARK: FAMILIA */
+.script-line {
+  width: min(90%, 36ch);
+  margin: 0 auto 18px;
+  color: var(--rapunzel-muted);
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.65;
+}
+
+.name-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.name-group {
+  display: grid;
+  gap: 8px;
+  padding: 17px 12px;
+  border: 1px solid rgba(255, 226, 144, 0.28);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.name-group h3,
+.event-card-body span,
+.timeline-list time,
+.detalle-body strong,
+.dress-no strong {
+  color: var(--rapunzel-gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.name-group p {
+  display: grid;
+  gap: 4px;
+  color: var(--rapunzel-ink);
+  line-height: 1.35;
+}
+
+.family-amp {
+  color: var(--rapunzel-rose);
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* MARK: UBICACIONES */
+.event-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.event-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 226, 144, 0.32);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 42px rgba(30, 9, 46, 0.2);
+}
+
+.event-card-media img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.event-card-body {
+  display: grid;
+  gap: 9px;
+  padding: 17px 16px 20px;
+}
+
+.event-card-body strong {
+  color: var(--rapunzel-cream);
+  font-family: var(--font-accent);
+  font-size: clamp(1.65rem, 7vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.event-card-body em,
+.timeline-list span {
+  color: var(--rapunzel-cream);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.event-card-body p,
+.notes-block li,
+.dress-body p,
+.confirmacion-card p,
+.detalle-body span {
+  color: var(--rapunzel-muted);
+  line-height: 1.6;
+}
+
+.location-button {
+  justify-self: center;
+  width: fit-content;
+  max-width: calc(100% - 1.4rem);
+  margin-top: 4px;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* MARK: ITINERARIO */
+.timeline-list {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-list li {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 20px 12px;
+  border: 1px solid rgba(255, 226, 144, 0.3);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* MARK: ICONOS-ITINERARIO-CATALOGO-FORMAL
+   Iconos leidos desde JSON y servidos desde Assets global. */
+.timeline-list li.timeline-has-icon {
+  align-items: center;
+  justify-items: center;
+}
+
+.timeline-list .timeline-icon {
+  position: relative;
+  z-index: 1;
+  width: var(--itinerario-icon-box, clamp(76px, 22vw, 112px));
+  height: var(--itinerario-icon-box, clamp(76px, 22vw, 112px));
+  min-width: var(--itinerario-icon-box, clamp(76px, 22vw, 112px));
+  display: inline-grid;
+  place-items: center;
+  justify-self: center;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .1);
+  line-height: 1;
+}
+
+.timeline-list .timeline-icon img {
+  width: var(--itinerario-icon-img, clamp(54px, 15vw, 78px));
+  height: var(--itinerario-icon-img, clamp(54px, 15vw, 78px));
+  object-fit: contain;
+  opacity: 1;
+}
+
+/* MARK: DETALLES */
+.details-block ul,
+.notes-block ul {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detalle-card {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 16px;
+  border: 1px solid rgba(255, 226, 144, 0.34);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sobre-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.34;
+}
+
+.sobre-rain i {
+  position: absolute;
+  top: -14px;
+  width: 18px;
+  height: 12px;
+  border: 1px solid var(--rapunzel-gold);
+  border-radius: 2px;
+  animation: detail-fall 7s linear infinite;
+}
+
+.sobre-rain i:nth-child(1) { left: 12%; animation-delay: -1s; }
+.sobre-rain i:nth-child(2) { left: 28%; animation-delay: -3s; }
+.sobre-rain i:nth-child(3) { left: 44%; animation-delay: -5s; }
+.sobre-rain i:nth-child(4) { left: 58%; animation-delay: -2s; }
+.sobre-rain i:nth-child(5) { left: 72%; animation-delay: -4s; }
+.sobre-rain i:nth-child(6) { left: 86%; animation-delay: -6s; }
+
+.detalle-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+}
+
+/* MARK: VESTIMENTA */
+.dress-card,
+.confirmacion-card {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.dress-media,
+.confirmacion-media {
+  width: min(62%, 220px);
+  margin: 0 auto;
+}
+
+.confirmacion-media {
+  width: clamp(120px, 40vw, 165px);
+  transform-origin: center 55%;
+  animation: rsvp-lantern-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.dress-media img,
+.confirmacion-media img {
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 20px rgba(30, 9, 46, 0.32));
+}
+
+.dress-body {
+  display: grid;
+  gap: 16px;
+}
+
+.dress-no {
+  display: grid;
+  gap: 10px;
+}
+
+.dress-no div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dress-no span {
+  padding: 7px 12px;
+  color: var(--rapunzel-cream);
+  border: 1px solid rgba(255, 226, 144, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* MARK: GALERIA */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gallery-gap);
+  margin-top: 22px;
+}
+
+.gallery-item {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.gallery-item.is-wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(255, 226, 144, 0.38);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 34px rgba(30, 9, 46, 0.26);
+  transform-origin: center;
+  transition: transform 0.28s ease, filter 0.28s ease, box-shadow 0.28s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: translateY(-3px) scale(1.015);
+  filter: saturate(1.08) brightness(1.04);
+  box-shadow: 0 22px 46px rgba(30, 9, 46, 0.34), 0 0 22px rgba(244, 196, 95, 0.24);
+}
+
+.gallery-item:focus-visible {
+  outline: 2px solid var(--rapunzel-cream);
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+
+.gallery-item.is-wide img {
+  aspect-ratio: 16 / 10;
+}
+
+/* MARK: NOTAS */
+.notes-block li {
+  padding: 13px 12px;
+  border: 1px solid rgba(255, 226, 144, 0.28);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* MARK: RSVP */
+.rsvp-block form {
+  display: grid;
+  gap: 11px;
+  margin-top: 20px;
+}
+
+.rsvp-block input,
+.rsvp-block textarea {
+  width: 100%;
+  padding: 13px 14px;
+  color: var(--rapunzel-ink);
+  border: 1px solid rgba(255, 226, 144, 0.36);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.rsvp-block input::placeholder,
+.rsvp-block textarea::placeholder {
+  color: rgba(239, 216, 244, 0.68);
+}
+
+.rsvp-block input:focus,
+.rsvp-block textarea:focus {
+  border-color: var(--rapunzel-gold);
+  box-shadow: 0 0 0 3px rgba(244, 196, 95, 0.18);
+}
+
+.rsvp-block button {
+  width: fit-content;
+  margin: 4px auto 0;
+  cursor: pointer;
+}
+
+/* MARK: CIERRE */
+.final-section {
+  position: relative;
+  min-height: 48vh;
+  display: grid;
+  place-items: center;
+  justify-items: center;
+  gap: 18px;
+  margin: 0 auto;
+  padding: clamp(44px, 8vw, 86px) 1.2rem calc(120px + env(safe-area-inset-bottom, 0px));
+  text-align: center !important;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.final-section::before {
+  content: "";
+  display: block;
+  width: min(320px, 78vw);
+  height: 58px;
+  margin: 0 auto 2px;
+  background:
+    linear-gradient(90deg, transparent, rgba(244, 196, 95, 0.54), transparent) center / 100% 1px no-repeat,
+    url("img/rapunzel-flores-superior41f6.png?cache=88") center / contain no-repeat;
+  filter: drop-shadow(0 0 16px rgba(244, 196, 95, 0.28));
+  opacity: 0.78;
+}
+
+.final-section .eyebrow {
+  margin: 0;
+}
+
+.final-section h2 {
+  position: relative;
+  margin: 0;
+  color: var(--rapunzel-cream);
+  font-family: var(--font-title);
+  font-size: clamp(4.8rem, 15vw, 9rem);
+  font-weight: 400;
+  line-height: 0.86;
+  text-transform: none;
+  text-shadow:
+    0 0 18px rgba(244, 196, 95, 0.34),
+    0 16px 34px rgba(0, 0, 0, 0.42);
+}
+
+#farewell-name {
+  font-family: var(--font-rapunzel-name);
+}
+
+.final-section h2::after {
+  content: "";
+  position: absolute;
+  right: 4%;
+  top: 0.08em;
+  width: 0.24em;
+  aspect-ratio: 1;
+  background: url("img/Sol_rapunzel41f6.png?cache=88") center / contain no-repeat;
+  filter: drop-shadow(0 0 14px rgba(244, 196, 95, 0.58));
+}
+
+.final-note {
+  width: fit-content;
+  max-width: min(90%, 520px);
+  margin: clamp(12px, 3.6vw, 24px) auto 4px;
+  padding: 0.28rem 0.62rem;
+  color: #fff5c9;
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 2.4vw, 1.16rem);
+  font-weight: 800;
+  line-height: 1.7;
+  border-radius: 999px;
+  background: rgba(37, 13, 56, 0.42);
+  -webkit-text-stroke: 0.35px rgba(43, 14, 66, 0.82);
+  text-shadow:
+    0 2px 7px rgba(30, 8, 48, 0.95),
+    0 0 14px rgba(244, 196, 95, 0.38);
+}
+
+.invite-shell {
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+/* MARK: PISTACHE */
+.pistache-credit {
+  position: sticky !important;
+  inset: auto !important;
+  bottom: 0 !important;
+  z-index: 12;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+  gap: 0.38rem !important;
+  width: 100vw !important;
+  max-width: none !important;
+  min-height: 58px;
+  margin: clamp(2rem, 7vw, 4rem) 50% 0 !important;
+  padding: 0.68rem max(16px, env(safe-area-inset-left, 0px)) calc(0.68rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-right, 0px)) !important;
+  color: rgba(255, 247, 232, 0.78) !important;
+  background: #16091f !important;
+  border-top: 1px solid rgba(244, 196, 95, 0.2);
+  border-radius: 0 !important;
+  box-shadow: 0 -14px 30px rgba(0, 0, 0, 0.18);
+  opacity: 1 !important;
+  text-align: center !important;
+  font-family: var(--font-body) !important;
+  font-size: clamp(0.72rem, 2.8vw, 0.86rem) !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.04em !important;
+  text-decoration: none !important;
+  transform: translateX(-50%);
+  box-sizing: border-box !important;
+  overflow: hidden;
+}
+
+.pistache-credit strong {
+  color: var(--rapunzel-gold) !important;
+  font-family: var(--font-accent) !important;
+  font-size: clamp(0.9rem, 3.2vw, 1.04rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em;
+}
+
+.pistache-credit:hover,
+.pistache-credit:focus-visible {
+  color: var(--rapunzel-cream) !important;
+}
+
+.pistache-credit:focus-visible {
+  outline: 2px solid rgba(255, 247, 232, 0.78);
+  outline-offset: -7px;
+}
+
+/* MARK: ORNAMENTOS-ENTRE-SECCIONES */
+.wonder-ornament,
+.rama-espiral {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(42px, 0.42fr) 1fr minmax(42px, 0.42fr);
+  align-items: center;
+  gap: 10px;
+  width: min(86%, 360px);
+  min-height: 72px;
+  margin: calc(var(--section-gap) * -0.42) auto calc(var(--section-gap) * 0.58);
+  pointer-events: none;
+}
+
+.wonder-ornament img,
+.rama-espiral img {
+  max-height: 78px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 16px rgba(30, 9, 46, 0.26));
+}
+
+.wonder-ornament span,
+.rama-espiral span {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rapunzel-line), var(--rapunzel-gold), var(--rapunzel-line), transparent);
+  box-shadow: 0 0 16px rgba(244, 196, 95, 0.42);
+}
+
+.ornament-wide {
+  width: min(96%, 420px);
+}
+
+.ornament-countdown {
+  margin: clamp(24px, 6vw, 44px) auto clamp(28px, 6vw, 48px);
+}
+
+.ornament-suns img {
+  max-height: 86px;
+  transform-origin: center;
+  animation: rapunzel-sun-spin 42s linear infinite;
+}
+
+/* MARK: MUSICA */
+.music-button {
+  position: fixed;
+  right: calc(14px + env(safe-area-inset-right));
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 24;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff7cc, #f3c25c);
+  box-shadow: 0 14px 28px rgba(30, 9, 46, 0.32);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.is-open .music-button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.music-button.is-muted {
+  opacity: 0.62;
+}
+
+.music-button img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+/* MARK: LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(20, 7, 31, 0.92);
+}
+
+.lightbox img {
+  max-width: min(92vw, 900px);
+  max-height: 86svh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: fixed;
+  z-index: 2;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  color: var(--rapunzel-cream);
+  border: 1px solid rgba(255, 226, 144, 0.54);
+  border-radius: 50%;
+  background: rgba(55, 23, 78, 0.86);
+  cursor: pointer;
+}
+
+.lightbox-close {
+  top: 18px;
+  right: 18px;
+  font-size: 1.7rem;
+}
+
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+}
+
+.lightbox-nav.is-prev { left: 12px; }
+.lightbox-nav.is-next { right: 12px; }
+
+/* MARK: ENTRADAS */
+.magic-reveal {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0) scale(0.96);
+  filter: blur(4px) saturate(0.86);
+  transition:
+    opacity 0.78s ease,
+    transform 0.78s cubic-bezier(0.2, 1.1, 0.22, 1),
+    filter 0.78s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.magic-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.memory-strip.magic-reveal.is-visible,
+.gallery-item.magic-reveal.is-visible {
+  animation: photo-glow 5.8s ease-in-out 0.8s infinite;
+}
+
+/* MARK: ANIMACIONES */
+@keyframes lantern-rise {
+  0% { transform: translate3d(0, 0, 0) scale(0.72); opacity: 0; }
+  12% { opacity: 0.82; }
+  88% { opacity: 0.82; }
+  100% { transform: translate3d(var(--lantern-drift, 22px), -112svh, 0) scale(1.12); opacity: 0; }
+}
+
+@keyframes lantern-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  50% { transform: translate3d(10px, -20px, 0) rotate(5deg); }
+}
+
+@keyframes rsvp-lantern-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(calc(var(--float-rotate, 0deg) - 1deg)); }
+  25% { transform: translate3d(3px, -7px, 0) rotate(calc(var(--float-rotate, 0deg) + 1.2deg)); }
+  50% { transform: translate3d(-2px, -11px, 0) rotate(calc(var(--float-rotate, 0deg) - 0.8deg)); }
+  75% { transform: translate3d(2px, -5px, 0) rotate(calc(var(--float-rotate, 0deg) + 0.8deg)); }
+}
+
+@keyframes rapunzel-sun-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes soft-twirl {
+  0%, 100% { transform: translateX(var(--sun-translate-x, 0%)) rotate(-5deg) scale(1); }
+  50% { transform: translateX(var(--sun-translate-x, 0%)) rotate(7deg) scale(1.08); }
+}
+
+@keyframes wood-button-enter {
+  0% {
+    opacity: 0;
+    translate: 0 18px;
+    scale: 0.84;
+    filter: blur(4px);
+  }
+  72% {
+    opacity: 1;
+    translate: 0 -3px;
+    scale: 1.04;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes rapunzel-stars {
+  to { background-position: 92px 92px, -138px 138px, 176px -176px; }
+}
+
+@keyframes detail-fall {
+  from { transform: translateY(-20px) rotate(-10deg); opacity: 0; }
+  12% { opacity: 0.6; }
+  to { transform: translateY(230px) rotate(18deg); opacity: 0; }
+}
+
+@keyframes photo-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(244, 196, 95, 0)); }
+  50% { filter: drop-shadow(0 0 16px rgba(244, 196, 95, 0.22)); }
+}
+
+/* MARK: RESPONSIVE */
+@media (min-width: 700px) {
+  :root {
+    --content-width: min(100%, 520px);
+    --gallery-gap: 14px;
+  }
+
+  .invite-shell {
+    max-width: min(100vw - 40px, 520px);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --content-width: min(100%, 430px);
+    --section-gap: 4.4rem;
+    --panel-radius: 22px;
+    --photo-radius: 22px;
+    --gallery-gap: 8px;
+  }
+
+  .invite-shell {
+    max-width: min(calc(100vw - 24px), 430px);
+  }
+
+  .hero-block {
+    padding-top: 36px;
+  }
+
+  .hero-block h1 {
+    font-size: clamp(5.35rem, 26vw, 8.2rem);
+  }
+
+  .portrait-frame {
+    width: min(96vw, 58svh, 440px);
+  }
+
+
+
+  .event-card-media img {
+    height: 190px;
+  }
+
+  .ornament-left,
+  .ornament-right {
+    width: 27vw;
+    opacity: 0.58;
+  }
+
+  .ornament-left { left: -56px; }
+  .ornament-right { right: -56px; }
+
+  .flower-soft {
+    opacity: 0.42;
+  }
+
+  .lantern {
+    opacity: 0.64;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-item,
+  .gallery-item img {
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .magic-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+/* MARK: BUZON DE DESEOS */
+.detalle-card--buzon {
+  display: grid;
+  justify-items: center;
+  gap: .75rem;
+}
+
+.detalle-media {
+  position: relative;
+  z-index: 1;
+  width: clamp(96px, 34vw, 148px);
+  margin: 0;
+}
+
+.detalle-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .28));
+}
+
+.detalle-button {
+  justify-self: center;
+  width: fit-content;
+  max-width: calc(100% - 1.4rem);
+  min-height: 34px;
+  margin-top: .35rem;
+  padding: .44rem .9rem;
+  font-size: .72rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* MARK: AVISO DE BAJADA AUTOMATICA */
+.auto-scroll-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 80;
+  width: min(calc(100% - 36px), 420px);
+  margin: 0;
+  padding: 11px 15px;
+  border: 1px solid rgba(255, 225, 136, .68);
+  border-radius: 14px;
+  background: rgba(39, 18, 57, .94);
+  color: #fff7e4;
+  box-shadow: 0 10px 26px rgba(20, 8, 34, .42);
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity .24s ease, transform .24s ease;
+}
+
+.auto-scroll-notice.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* === reloj-base41f6.css === */
+/* =========================================================
+   MARK: RELOJ BASE - Compatibilidad count-section
+   Uso recomendado: base minima para relojes formales.
+   Compatible con: .count-section, .countdown, .count-box y reloj-base.js.
+   No depende de: ningun demo especifico.
+   ========================================================= */
+
+/* MARK: Variables */
+.count-section[class*="reloj-"] {
+  --reloj-base-ink: var(--reloj-ink, #231f1a);
+  --reloj-base-muted: var(--reloj-muted, #75695b);
+  --reloj-base-accent: var(--reloj-accent, #b99048);
+  --reloj-base-line: var(--reloj-line, rgba(185, 144, 72, 0.34));
+  color: var(--reloj-base-ink);
+  box-sizing: border-box;
+}
+
+.count-section[class*="reloj-"] *,
+.count-section[class*="reloj-"] *::before,
+.count-section[class*="reloj-"] *::after {
+  box-sizing: border-box;
+}
+
+/* MARK: Contenedor principal */
+.count-section[class*="reloj-"] {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: clamp(14px, 3vw, 24px);
+  width: min(100%, 680px);
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+/* MARK: Titulo */
+.count-section[class*="reloj-"] .eyebrow {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  text-align: center;
+}
+
+/* MARK: Orbita / reloj */
+.count-section[class*="reloj-"] .countdown {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: min(100%, 460px);
+}
+
+/* MARK: Tarjetas de tiempo */
+.count-section[class*="reloj-"] .count-box {
+  min-width: 0;
+  text-align: center;
+}
+
+/* MARK: Numeros */
+.count-section[class*="reloj-"] .count-box strong {
+  display: block;
+  line-height: 1;
+}
+
+/* MARK: Etiquetas */
+.count-section[class*="reloj-"] .count-box span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+/* MARK: Boton calendario */
+.count-section[class*="reloj-"] .text-button {
+  position: relative;
+  z-index: 4;
+  cursor: pointer;
+}
+
+/* MARK: Decoraciones */
+.count-section[class*="reloj-"]::before,
+.count-section[class*="reloj-"]::after {
+  pointer-events: none;
+}
+
+/* MARK: Responsive escritorio */
+@media (min-width: 980px) {
+  .count-section[class*="reloj-"] {
+    min-height: var(--reloj-min-height-desktop, 620px);
+  }
+}
+
+/* MARK: Responsive tablet */
+@media (max-width: 900px) {
+  .count-section[class*="reloj-"] {
+    width: min(100%, calc(100vw - 28px));
+  }
+}
+
+/* MARK: Responsive iPhone / moviles */
+@media (max-width: 640px) {
+  .count-section[class*="reloj-"] {
+    min-height: var(--reloj-min-height-mobile, 520px);
+    padding-inline: max(14px, env(safe-area-inset-left, 0px));
+  }
+}
+
+/* === reloj-rapunzel41f6.css === */
+/* =========================================================
+   MARK: RELOJ RAPUNZEL - Magia floral dorada
+   Uso recomendado: demos tipo Rapunzel, cuento elegante, fantasia romantica.
+   Compatible con: .count-section, .countdown, .count-box y JS base del reloj.
+   No depende de: otros demos.
+   ========================================================= */
+
+/* MARK: RELOJ RAPUNZEL - Variables */
+.count-section.reloj-rapunzel {
+  --rrp-bg: linear-gradient(180deg, #8a5a91 0%, #b982ad 34%, #efd1dd 68%, #7d4a87 100%);
+  --rrp-bg-soft: #f7e4ec;
+  --rrp-panel: rgba(255, 236, 245, 0.66);
+  --rrp-panel-strong: rgba(255, 248, 239, 0.88);
+  --rrp-purple: #5a2c67;
+  --rrp-violet: #7e4b9d;
+  --rrp-lavender: #d9b3e9;
+  --rrp-pink: #f4b4cd;
+  --rrp-cream: #fff5db;
+  --rrp-gold: #d7a84b;
+  --rrp-gold-soft: #f8d979;
+  --rrp-glow: rgba(255, 224, 132, 0.68);
+  --rrp-line: rgba(248, 217, 121, 0.72);
+  --rrp-shadow: rgba(55, 20, 72, 0.34);
+  --rrp-clock-size: clamp(302px, 72vw, 456px);
+  --rrp-box-min: clamp(94px, 18vw, 138px);
+  --reloj-min-height-desktop: 800px;
+  --reloj-min-height-mobile: 690px;
+  --reloj-ink: var(--rrp-purple);
+  --reloj-accent: var(--rrp-gold);
+}
+
+/* MARK: RELOJ RAPUNZEL - Decoraciones editables desde JSON */
+.count-section.reloj-rapunzel {
+  --rrp-img-top: none;
+  --rrp-img-bottom: none;
+  --rrp-img-left: none;
+  --rrp-img-right: none;
+  --rrp-img-floral: none;
+  --rrp-img-marco: none;
+  --rrp-img-sol: none;
+  --rrp-img-linterna: none;
+  --rrp-img-ornamento: none;
+}
+
+/* MARK: RELOJ RAPUNZEL - Fondo base en color */
+.count-section.reloj-rapunzel {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 720px);
+  min-height: var(--reloj-min-height-desktop);
+  padding: clamp(96px, 12vw, 132px) clamp(16px, 4vw, 34px) clamp(122px, 12vw, 158px);
+  border: 1px solid rgba(255, 238, 177, 0.68);
+  border-radius: clamp(32px, 6vw, 48px);
+  overflow: hidden;
+  color: var(--rrp-purple);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 249, 230, 0.72), transparent 23%),
+    radial-gradient(circle at 24% 14%, rgba(255, 219, 245, 0.54), transparent 26%),
+    radial-gradient(circle at 76% 82%, rgba(255, 224, 132, 0.26), transparent 28%),
+    radial-gradient(circle at 14% 78%, rgba(122, 70, 146, 0.3), transparent 34%),
+    var(--rrp-bg);
+  box-shadow:
+    0 26px 70px rgba(42, 14, 56, 0.34),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 0 80px rgba(255, 244, 224, 0.22);
+}
+
+.count-section.reloj-rapunzel > * {
+  position: relative;
+  z-index: 4;
+}
+
+.count-section.reloj-rapunzel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255, 248, 218, 0.9) 0 1px, transparent 2px),
+    radial-gradient(circle at 84% 24%, rgba(255, 224, 132, 0.92) 0 1.2px, transparent 2.4px),
+    radial-gradient(circle at 30% 72%, rgba(255, 255, 255, 0.82) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 76%, rgba(248, 217, 121, 0.86) 0 1px, transparent 2px),
+    linear-gradient(135deg, transparent, rgba(255, 244, 222, 0.2), transparent 64%);
+  background-size: 56px 56px, 78px 78px, 92px 92px, 64px 64px, 100% 100%;
+  opacity: 0.72;
+  pointer-events: none;
+  animation: rrpMagicGlow 7s ease-in-out infinite;
+}
+
+.count-section.reloj-rapunzel::after {
+  content: "";
+  position: absolute;
+  inset: clamp(10px, 2vw, 18px);
+  z-index: 1;
+  border: 1px solid rgba(248, 217, 121, 0.72);
+  border-radius: calc(clamp(32px, 6vw, 48px) - 12px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 0 28px rgba(255, 245, 221, 0.2);
+  pointer-events: none;
+}
+
+/* MARK: RELOJ RAPUNZEL - Composicion principal */
+.count-section.reloj-rapunzel .eyebrow {
+  z-index: 8;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin: 0 0 clamp(8px, 2vw, 16px);
+  color: var(--rrp-purple);
+  font-family: var(--font-body, Georgia, "Times New Roman", serif);
+  font-size: clamp(1.1rem, 3.4vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 0.95;
+  text-align: center;
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.38),
+    0 0 16px rgba(248, 217, 121, 0.5);
+  text-transform: uppercase;
+}
+
+.count-section.reloj-rapunzel .eyebrow::before,
+.count-section.reloj-rapunzel .eyebrow::after {
+  content: "";
+  width: clamp(44px, 12vw, 92px);
+  height: 1px;
+  margin-inline: clamp(8px, 2vw, 14px);
+  background: linear-gradient(90deg, transparent, var(--rrp-gold-soft), transparent);
+}
+
+.count-section.reloj-rapunzel .rrp-img {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* MARK: RELOJ RAPUNZEL - Flores y ornamentos */
+.count-section.reloj-rapunzel .rrp-img--top {
+  left: 50%;
+  top: 8px;
+  z-index: 3;
+  width: min(96%, 640px);
+  height: clamp(96px, 17vw, 132px);
+  background-image: var(--rrp-img-top, none);
+  filter: drop-shadow(0 14px 18px rgba(69, 24, 82, 0.26));
+  opacity: 0.94;
+  transform: translateX(-50%);
+}
+
+.count-section.reloj-rapunzel .rrp-img--bottom {
+  left: 50%;
+  bottom: -10px;
+  z-index: 3;
+  width: min(104%, 690px);
+  height: clamp(118px, 21vw, 172px);
+  background-image: var(--rrp-img-bottom, none);
+  filter: drop-shadow(0 -12px 18px rgba(69, 24, 82, 0.18));
+  opacity: 0.88;
+  transform: translateX(-50%);
+}
+
+.count-section.reloj-rapunzel .rrp-img--left,
+.count-section.reloj-rapunzel .rrp-img--right {
+  top: clamp(172px, 25vw, 210px);
+  z-index: 2;
+  width: clamp(104px, 17vw, 156px);
+  height: clamp(356px, 50vw, 490px);
+  opacity: 0.76;
+  filter:
+    drop-shadow(0 20px 24px rgba(64, 22, 79, 0.3))
+    drop-shadow(0 0 18px rgba(248, 217, 121, 0.18));
+}
+
+.count-section.reloj-rapunzel .rrp-img--left {
+  left: clamp(-46px, -6vw, -18px);
+  background-image: var(--rrp-img-left, none);
+  background-position: left center;
+}
+
+.count-section.reloj-rapunzel .rrp-img--right {
+  right: clamp(-46px, -6vw, -18px);
+  background-image: var(--rrp-img-right, none);
+  background-position: right center;
+}
+
+.count-section.reloj-rapunzel .rrp-img--floral {
+  left: 50%;
+  bottom: 54px;
+  z-index: 2;
+  width: clamp(160px, 30vw, 250px);
+  height: clamp(116px, 20vw, 170px);
+  background-image: var(--rrp-img-floral, none);
+  filter: drop-shadow(0 18px 24px rgba(54, 17, 70, 0.24));
+  opacity: 0.5;
+  transform: translateX(-50%);
+}
+
+.count-section.reloj-rapunzel .rrp-img--marco {
+  left: 50%;
+  top: clamp(88px, 11vw, 118px);
+  z-index: 2;
+  width: clamp(170px, 34vw, 260px);
+  height: clamp(80px, 13vw, 118px);
+  background-image: var(--rrp-img-marco, none);
+  filter: drop-shadow(0 0 12px rgba(248, 217, 121, 0.28));
+  opacity: 0.22;
+  transform: translateX(-50%);
+}
+
+.count-section.reloj-rapunzel .rrp-img--ornamento {
+  left: 50%;
+  bottom: clamp(90px, 12vw, 118px);
+  z-index: 5;
+  width: min(74%, 360px);
+  height: clamp(46px, 8vw, 66px);
+  background-image: var(--rrp-img-ornamento, none);
+  filter: drop-shadow(0 0 12px rgba(248, 217, 121, 0.36));
+  opacity: 0.72;
+  transform: translateX(-50%);
+}
+
+/* MARK: RELOJ RAPUNZEL - Sol decorativo */
+.count-section.reloj-rapunzel .rrp-img--sol {
+  left: 50%;
+  top: clamp(176px, 25vw, 220px);
+  z-index: 3;
+  width: clamp(74px, 13vw, 104px);
+  aspect-ratio: 1;
+  background-image: var(--rrp-img-sol, none);
+  filter:
+    drop-shadow(0 0 16px rgba(248, 217, 121, 0.54))
+    drop-shadow(0 0 30px rgba(255, 238, 177, 0.28));
+  opacity: 0.36;
+  transform: translateX(-50%);
+  animation: rrpSunPulse 6s ease-in-out infinite;
+}
+
+/* MARK: RELOJ RAPUNZEL - Linternas */
+.count-section.reloj-rapunzel .rrp-img--linterna {
+  left: clamp(18px, 5vw, 42px);
+  top: clamp(92px, 15vw, 136px);
+  z-index: 3;
+  width: clamp(54px, 10vw, 78px);
+  height: clamp(86px, 15vw, 126px);
+  background-image: var(--rrp-img-linterna, none);
+  filter:
+    drop-shadow(0 0 16px rgba(255, 229, 147, 0.48))
+    drop-shadow(0 10px 14px rgba(65, 22, 78, 0.22));
+  opacity: 0.58;
+  transform: rotate(-8deg);
+  animation: rrpLanternFloat 5.8s ease-in-out infinite;
+}
+
+.count-section.reloj-rapunzel .rrp-img--linterna::before,
+.count-section.reloj-rapunzel .rrp-img--linterna::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-image: var(--rrp-img-linterna, none);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: inherit;
+  opacity: 0.72;
+}
+
+.count-section.reloj-rapunzel .rrp-img--linterna::before {
+  right: max(-58vw, -480px);
+  top: 22px;
+  width: 70px;
+  height: 112px;
+  transform: rotate(13deg);
+}
+
+.count-section.reloj-rapunzel .rrp-img--linterna::after {
+  right: max(-52vw, -420px);
+  top: clamp(360px, 48vw, 430px);
+  width: 58px;
+  height: 94px;
+  transform: rotate(-16deg);
+}
+
+/* MARK: RELOJ RAPUNZEL - Countdown */
+.count-section.reloj-rapunzel .countdown {
+  z-index: 6;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: var(--rrp-clock-size);
+  max-width: 100%;
+  aspect-ratio: 1;
+  gap: clamp(12px, 2.4vw, 18px);
+  place-content: center;
+  margin: 0 auto;
+  padding: clamp(54px, 9vw, 78px);
+  border: 1px solid rgba(248, 217, 121, 0.76);
+  border-radius: 50%;
+  background-image:
+    var(--rrp-img-sol, none),
+    radial-gradient(circle at 50% 50%, rgba(255, 251, 236, 0.78), transparent 16%),
+    radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.76), transparent 21%),
+    radial-gradient(circle at 70% 74%, rgba(248, 180, 205, 0.32), transparent 28%),
+    radial-gradient(circle, rgba(232, 176, 225, 0.62), rgba(187, 118, 173, 0.36) 58%, rgba(255, 233, 180, 0.24) 76%, rgba(255, 255, 255, 0.12));
+  background-position: center, center, center, center, center;
+  background-repeat: no-repeat;
+  background-size: clamp(74px, 15vw, 104px) auto, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  box-shadow:
+    0 0 0 8px rgba(255, 237, 190, 0.14),
+    0 0 44px rgba(248, 217, 121, 0.34),
+    0 22px 46px rgba(60, 20, 78, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+    inset 0 0 42px rgba(255, 250, 235, 0.4);
+}
+
+.count-section.reloj-rapunzel .countdown::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    conic-gradient(from 45deg, transparent 0 7%, rgba(248, 217, 121, 0.72) 8% 9%, transparent 10% 24%, rgba(255, 247, 209, 0.92) 25% 26%, transparent 27% 49%, rgba(248, 217, 121, 0.72) 50% 51%, transparent 52% 74%, rgba(255, 247, 209, 0.92) 75% 76%, transparent 77%),
+    radial-gradient(circle, rgba(255, 233, 172, 0.22), transparent 70%);
+  filter: drop-shadow(0 0 10px rgba(248, 217, 121, 0.3));
+}
+
+.count-section.reloj-rapunzel .countdown::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 76%;
+  height: 76%;
+  background-image: var(--rrp-img-ornamento, none);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.26;
+  filter: drop-shadow(0 0 10px rgba(248, 217, 121, 0.28));
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.count-section.reloj-rapunzel .count-box {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  min-height: var(--rrp-box-min);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 5px;
+  padding: clamp(12px, 2.4vw, 18px);
+  border: 1px solid rgba(215, 168, 75, 0.62);
+  border-radius: 50%;
+  color: var(--rrp-purple);
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.96), transparent 20%),
+    linear-gradient(180deg, rgba(255, 251, 243, 0.94), rgba(255, 227, 239, 0.88));
+  box-shadow:
+    0 14px 28px rgba(82, 32, 96, 0.17),
+    inset 0 0 0 5px rgba(255, 255, 255, 0.32),
+    inset 0 -14px 26px rgba(229, 159, 196, 0.18);
+}
+
+.count-section.reloj-rapunzel .count-box::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  z-index: -1;
+  border: 1px solid rgba(248, 217, 121, 0.66);
+  border-radius: inherit;
+  background:
+    radial-gradient(circle, rgba(255, 237, 182, 0.32), transparent 62%);
+}
+
+.count-section.reloj-rapunzel .count-box strong {
+  color: var(--rrp-purple);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.35rem, 7vw, 4.35rem);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.4);
+}
+
+.count-section.reloj-rapunzel .count-box span {
+  color: rgba(90, 44, 103, 0.9);
+  font-family: var(--font-body, Georgia, "Times New Roman", serif);
+  font-size: clamp(0.72rem, 1.75vw, 0.92rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* MARK: RELOJ RAPUNZEL - Boton calendario */
+.count-section.reloj-rapunzel #calendar-button.text-button {
+  z-index: 8;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: fit-content;
+  max-width: calc(100% - 20px);
+  min-height: 48px;
+  margin: clamp(6px, 2vw, 12px) auto 0 !important;
+  padding: 0.78rem 1.28rem;
+  border: 1px solid rgba(248, 217, 121, 0.82);
+  border-radius: 999px;
+  color: var(--rrp-cream);
+  background:
+    linear-gradient(180deg, rgba(98, 43, 101, 0.88), rgba(66, 27, 78, 0.94)),
+    rgba(90, 44, 103, 0.88);
+  box-shadow:
+    0 14px 24px rgba(54, 17, 70, 0.24),
+    0 0 22px rgba(248, 217, 121, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  font-family: var(--font-body, Georgia, "Times New Roman", serif);
+  font-size: clamp(13px, 1.7vw, 16px) !important;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: none;
+  white-space: nowrap !important;
+  cursor: pointer;
+  transform: none !important;
+}
+
+.count-section.reloj-rapunzel #calendar-button.text-button:hover,
+.count-section.reloj-rapunzel #calendar-button.text-button:focus-visible {
+  color: #fff9df;
+  background:
+    linear-gradient(180deg, rgba(119, 58, 126, 0.94), rgba(73, 30, 86, 0.96)),
+    rgba(90, 44, 103, 0.92);
+  box-shadow:
+    0 16px 30px rgba(54, 17, 70, 0.3),
+    0 0 30px rgba(248, 217, 121, 0.42);
+  outline: 0;
+}
+
+/* MARK: RELOJ RAPUNZEL - Manecillas */
+.count-section.reloj-rapunzel .countdown .count-box:nth-child(1)::after,
+.count-section.reloj-rapunzel .countdown .count-box:nth-child(2)::after,
+.count-section.reloj-rapunzel .countdown .count-box:nth-child(3)::after,
+.count-section.reloj-rapunzel .countdown .count-box:nth-child(4)::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(215, 168, 75, 0.22);
+  pointer-events: none;
+}
+
+@keyframes rrpMagicGlow {
+  0%, 100% {
+    opacity: 0.58;
+    filter: brightness(0.98);
+  }
+  50% {
+    opacity: 0.86;
+    filter: brightness(1.14);
+  }
+}
+
+@keyframes rrpSunPulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
+@keyframes rrpLanternFloat {
+  0%, 100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-5deg) translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .count-section.reloj-rapunzel::before,
+  .count-section.reloj-rapunzel .rrp-img--sol,
+  .count-section.reloj-rapunzel .rrp-img--linterna {
+    animation: none;
+  }
+}
+
+/* MARK: RELOJ RAPUNZEL - Responsive escritorio */
+@media (min-width: 980px) {
+  .count-section.reloj-rapunzel {
+    padding-top: 138px;
+    padding-bottom: 160px;
+  }
+}
+
+/* MARK: RELOJ RAPUNZEL - Responsive tablet */
+@media (max-width: 900px) {
+  .count-section.reloj-rapunzel {
+    width: min(100%, calc(100vw - 28px));
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--left,
+  .count-section.reloj-rapunzel .rrp-img--right {
+    opacity: 0.58;
+  }
+}
+
+/* MARK: RELOJ RAPUNZEL - Responsive iPhone */
+@media (max-width: 640px) {
+  .count-section.reloj-rapunzel {
+    --rrp-clock-size: min(100%, 312px);
+    --rrp-box-min: clamp(76px, 22vw, 92px);
+    min-height: var(--reloj-min-height-mobile);
+    padding: 94px 12px 118px;
+    border-radius: 32px;
+  }
+
+  .count-section.reloj-rapunzel::after {
+    inset: 8px;
+  }
+
+  .count-section.reloj-rapunzel .eyebrow {
+    font-size: clamp(1.05rem, 5.4vw, 1.42rem);
+    letter-spacing: 0.13em;
+  }
+
+  .count-section.reloj-rapunzel .eyebrow::before,
+  .count-section.reloj-rapunzel .eyebrow::after {
+    width: 42px;
+    margin-inline: 7px;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--top {
+    top: 10px;
+    width: 108%;
+    height: 92px;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--bottom {
+    bottom: -8px;
+    width: 116%;
+    height: 112px;
+    opacity: 0.8;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--left,
+  .count-section.reloj-rapunzel .rrp-img--right {
+    top: 156px;
+    width: 94px;
+    height: 350px;
+    opacity: 0.34;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--left {
+    left: -48px;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--right {
+    right: -48px;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--floral {
+    bottom: 58px;
+    width: 160px;
+    height: 110px;
+    opacity: 0.42;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--marco {
+    top: 86px;
+    width: 150px;
+    height: 76px;
+    opacity: 0.18;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--sol {
+    top: 160px;
+    width: 66px;
+    opacity: 0.3;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--linterna {
+    left: 16px;
+    top: 102px;
+    width: 46px;
+    height: 78px;
+    opacity: 0.38;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--linterna::before,
+  .count-section.reloj-rapunzel .rrp-img--linterna::after {
+    display: none;
+  }
+
+  .count-section.reloj-rapunzel .rrp-img--ornamento {
+    bottom: 86px;
+    width: 76%;
+    height: 42px;
+    opacity: 0.58;
+  }
+
+  .count-section.reloj-rapunzel .countdown {
+    gap: 9px;
+    padding: 42px;
+  }
+
+  .count-section.reloj-rapunzel .count-box {
+    gap: 3px;
+    padding: 10px;
+  }
+
+  .count-section.reloj-rapunzel .count-box strong {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+
+  .count-section.reloj-rapunzel .count-box span {
+    font-size: clamp(0.58rem, 2.5vw, 0.68rem);
+    letter-spacing: 0.09em;
+  }
+
+  .count-section.reloj-rapunzel #calendar-button.text-button {
+    max-width: calc(100% - 18px);
+    min-height: 42px;
+    padding: 0.66rem 0.98rem;
+    font-size: 12px !important;
+  }
+}
+
+/* === responsivedb22.css === */
+:root {
+  --preview-width: 100vw;
+  --preview-height: 100svh;
+  --preview-scale: 1;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  overscroll-behavior-x: none;
+}
+
+body {
+  justify-items: center;
+}
+
+.phone-preview-shell {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  overflow-x: clip;
+}
+
+.phone-preview-stage {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  transform-origin: top center;
+  overflow-x: clip;
+}
+
+.invite-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  overflow-x: clip;
+}
+
+body.desktop-phone-preview {
+  padding: 18px 0 28px;
+}
+
+body.desktop-phone-preview .phone-preview-shell {
+  width: var(--preview-width);
+  max-width: var(--preview-width);
+  min-height: var(--preview-height);
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.20),
+    0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+body.desktop-phone-preview .phone-preview-stage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%) scale(var(--preview-scale));
+}
+
+body.desktop-phone-preview .invite-viewport {
+  min-height: calc(100vw * 16 / 9);
+}
+
+body.desktop-phone-preview .envelope-screen {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100vw;
+  height: calc(100vw * 16 / 9);
+  min-height: calc(100vw * 16 / 9);
+}
+
+body.desktop-phone-preview .overlay-card {
+  width: 92vw;
+  min-height: 68vw;
+  padding: 8vw 7vw;
+  border-radius: 9vw 9vw 30vw 30vw;
+}
+
+body.desktop-phone-preview .overlay-card::before {
+  height: 20vw;
+  margin-top: -6vw;
+  margin-bottom: -2vw;
+}
+
+body.desktop-phone-preview .overlay-event {
+  font-size: 4.8vw;
+}
+
+body.desktop-phone-preview .overlay-nombre {
+  font-size: 19vw;
+}
+
+body.desktop-phone-preview .open-seal {
+  min-width: 62vw;
+  margin-top: 7vw;
+  padding: 3.8vw 6vw;
+}
+
+body.desktop-phone-preview .open-seal span {
+  font-size: 5.6vw;
+}
+
+body.desktop-phone-preview .open-seal small {
+  font-size: 2.2vw;
+}
+
+
+/* MARK: RESPONSIVE-DISPOSITIVOS */
+:root { --app-height: 100dvh; --safe-bottom: env(safe-area-inset-bottom, 0px); }
+html.is-iphone, body.is-iphone { min-height: var(--app-height); -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+body.is-iphone {
+  background:
+    var(--bg-image) center top / 100% auto repeat-y scroll,
+    var(--rapunzel-bg);
+  background-attachment: scroll !important;
+}
+body.is-iphone .invite-viewport, body.is-android .invite-viewport { min-height: var(--app-height); }
+body.is-iphone .opening-envelope, body.is-iphone .envelope-screen { min-height: var(--app-height); padding-bottom: var(--safe-bottom); }
+body.is-iphone .music-button, body.is-iphone .icon-action { bottom: calc(1rem + var(--safe-bottom)) !important; }
+body.is-android { min-height: var(--app-height); }
+@media (max-width: 430px) { input, textarea, button, select { font-size: 16px; } img, video, canvas, svg { max-width: 100%; } }
+
+/* === pistache-credit-logo9b62.css === */
+.pistache-credit-brand-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.34rem;
+  vertical-align: middle;
+}
+
+.pistache-credit-logo {
+  display: inline-block;
+  width: clamp(16px, 4vw, 22px);
+  height: clamp(16px, 4vw, 22px);
+  max-width: 22px;
+  max-height: 22px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}

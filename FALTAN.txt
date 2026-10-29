@@ -1,0 +1,6 @@
+Imágenes del reloj que aún faltan (guárdalas en img/ con este nombre):
+img/rapunzel-flores-inferior.png  <-  https://pistachegirasol.com/Assets/Rpunzel/ornamentos/rapunzel-flores-inferior.png
+img/rapunzel-1.png                <-  https://pistachegirasol.com/Assets/Rpunzel/flores/rapunzel-1.png
+img/ornate_dorado.png             <-  https://pistachegirasol.com/Assets/Rpunzel/ornamentos/ornate_dorado.png
+img/vector_dorado.png             <-  https://pistachegirasol.com/Assets/Rpunzel/ornamentos/vector_dorado.png
+(Si las bajas en .webp, cambia la extensión en el JSON de index.html: reloj.imagenes)
